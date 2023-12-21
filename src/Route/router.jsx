@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import AddToDo from "../pages/AddToDo/AddToDo";
 import PrivateRoute from "./PrivateRoute";
+import ManageTodo from "../pages/ManageToDo/ManageTodo";
 
 
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         {
           path: "/addToDo",
           element: <PrivateRoute><AddToDo></AddToDo></PrivateRoute>
+        },
+        {
+          path: "/manageToDo",
+          element: <PrivateRoute><ManageTodo></ManageTodo></PrivateRoute>
         },
         {
           path: "/login",

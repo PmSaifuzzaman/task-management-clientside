@@ -41,7 +41,7 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/aboutUs" 
+                            <NavLink to="/aboutUs"
                                 className={({ isActive, isPending }) =>
                                     isPending ? "pending" : isActive ? "text-teal-400 underline font-medium" : ""
                                 }>
@@ -49,14 +49,22 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/AddToDo" 
+                            <NavLink to="/addToDo"
                                 className={({ isActive, isPending }) =>
                                     isPending ? "pending" : isActive ? "text-teal-400 underline font-medium" : ""
                                 }>
                                 Add To-Do
                             </NavLink>
                         </li>
-                    
+                        <li>
+                            <NavLink to="/manageToDo"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "text-teal-400 underline font-medium" : ""
+                                }>
+                                Manage My To-Do
+                            </NavLink>
+                        </li>
+
                     </ul>
                 </div>
                 <Link><h2 className="text-2xl font-bold">Task<span className="text-teal-400">Pilot</span></h2></Link>
@@ -87,7 +95,15 @@ const Navbar = () => {
                             Add To-Do
                         </NavLink>
                     </li>
-                    
+                    <li>
+                        <NavLink to="/manageToDo"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "text-teal-400 underline font-medium" : ""
+                            }>
+                            Manage My To-Do
+                        </NavLink>
+                    </li>
+
                 </ul>
             </div>
             {/* <div className="navbar-end">
@@ -113,7 +129,7 @@ const Navbar = () => {
                         :
                         <Link className="btn" to={"/login"}>Login</Link>
                 }
-                
+
             </div>
         </div>
     );
