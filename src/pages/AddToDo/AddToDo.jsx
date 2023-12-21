@@ -1,10 +1,31 @@
+import { useContext } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { useForm } from "react-hook-form"
+import { authContext } from "../../providers/AuthProvider";
 
 
 const AddToDo = () => {
+
+    const { user } = useContext(authContext);
+    const email = user ? user.email : null;
+
+
     const { register, handleSubmit } = useForm()
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        console.log(data)
+        fetch("http://localhost:5000/tasks", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                console.log(result)
+            });
+    }
+
     return (
         <div>
             <Navbar></Navbar>
@@ -18,16 +39,29 @@ const AddToDo = () => {
                         <textarea placeholder="Task description" className="input input-bordered w-full max-w-lg" {...register("description")} />
                     </div>
                     <div className="flex gap-5">
-                        <select {...register("priority")} className="select select-bordered w-full max-w-xs">
-                            <option value="low">low</option>
-                            <option value="moderate">moderate</option>
-                            <option value="high">high</option>
-                        </select>
-                        <select {...register("status")} className="select select-bordered w-full max-w-xs">
-                            <option value="to-do">to-do</option>
-                            <option value="ongoing">ongoing</option>
-                            <option value="completed">completed</option>
-                        </select>
+                        <div >
+                            <label htmlFor="priority" className="block text-sm font-medium text-gray-700">
+                                Task Priority
+                            </label>
+                            <select {...register("priority")} className="select select-bordered ">
+                                <option value="low">low</option>
+                                <option value="moderate">moderate</option>
+                                <option value="high">high</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="status" className="block text-sm font-medium text-gray-700">
+                                Task Status
+                            </label>
+                            <select {...register("status")} className="select select-bordered ">
+                                <option value="to-do">to-do</option>
+                                <option value="ongoing">ongoing</option>
+                                <option value="completed">completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <input className="input input-bordered w-full max-w-xs" type="email"  {...register("email", { required: true })} defaultValue={email} readOnly />
                     </div>
                     <button className="btn w-full bg-teal-400 text-white" type="submit">Add Task</button>
                 </form>
