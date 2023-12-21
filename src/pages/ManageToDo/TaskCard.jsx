@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 
-const TaskCard = ({ single_toDo }) => {
-    const{_id} = single_toDo;
+const TaskCard = ({ single_toDo, toDo, setToDo, completed, setCompleted }) => {
+    const{_id, deadline, priority} = single_toDo;
 
     const handleDelete = (_id) => {
 
@@ -32,6 +32,13 @@ const TaskCard = ({ single_toDo }) => {
                                 'Your Task has been deleted.',
                                 'success'
                             )
+                            const remainingTodoTasks = toDo?.filter(single_toDo => single_toDo._id !== _id) 
+                            setToDo(remainingTodoTasks)
+
+                            const remainingCompletedTask = completed?.filter(completedTask => completedTask._id !== _id) 
+                            setCompleted(remainingCompletedTask)
+                            
+                            
                             
                         }
                     })
@@ -44,6 +51,10 @@ const TaskCard = ({ single_toDo }) => {
             <div className=" p-4 ">
                 <h2 className="card-title">{single_toDo.title}</h2>
                 <p>{single_toDo.description}</p>
+                <div className='flex items-center justify-between py-2'>
+                    <p>Deadline: {deadline}</p>
+                    <p>Priority: {priority}</p>
+                </div>
                 <div className="card-actions justify-end">
                     <Link className=" text-2xl"><FaEdit></FaEdit></Link>
                     <button onClick={() => handleDelete(_id)} className='text-2xl'><FaTrash></FaTrash></button>
@@ -57,5 +68,10 @@ export default TaskCard;
 
 TaskCard.propTypes = {
     single_toDo: PropTypes.object,
+    toDo: PropTypes.array,
+    setToDo: PropTypes.func,
+    completed: PropTypes.array,
+    setCompleted: PropTypes.func,
+    
 
 }

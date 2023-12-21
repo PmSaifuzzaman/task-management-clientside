@@ -47,7 +47,7 @@ const ManageTodo = () => {
 
     }, [email]);
 
-    
+
 
 
     return (
@@ -61,7 +61,11 @@ const ManageTodo = () => {
                     <h2 className="text-2xl font-bold text-center py-3 border-b-4 border-double border-black">To-Do</h2>
                     <div>
                         {
-                            toDo?.map(single_toDo => <TaskCard key={single_toDo._id} single_toDo={single_toDo}></TaskCard>)
+                            toDo?.map(single_toDo => <TaskCard key={single_toDo._id}
+                                single_toDo={single_toDo}
+                                toDo={toDo}
+                                setToDo={setToDo}
+                            ></TaskCard>)
                         }
                     </div>
                 </div>
@@ -69,15 +73,23 @@ const ManageTodo = () => {
                     <h2 className="text-2xl font-bold text-center py-3 border-b-4 border-double border-black">Ongoing</h2>
                     <div>
                         {
-                            ongoing?.map(single_toDo => <TaskCard key={single_toDo._id} single_toDo={single_toDo}></TaskCard>)
+                            ongoing?.map(single_toDo => <TaskCard key={single_toDo._id}
+                                single_toDo={single_toDo}
+                                // ongoing={ongoing}
+                                // setOngoing={setOngoing}
+                            ></TaskCard>)
                         }
                     </div>
                 </div>
                 <div className="bg-teal-100">
-                    <h2 className="text-2xl font-bold text-center py-3 border-b-4 border-double border-black">completed</h2>
+                    <h2 className="text-2xl font-bold text-center py-3 border-b-4 border-double border-black">Completed</h2>
                     <div>
                         {
-                            completed?.map(single_toDo => <TaskCard key={single_toDo._id} single_toDo={single_toDo}></TaskCard>)
+                            completed?.map(single_toDo => <TaskCard key={single_toDo._id}
+                                 single_toDo={single_toDo}
+                                 completed={completed}
+                                 setCompleted={setCompleted}
+                                 ></TaskCard>)
                         }
                     </div>
                 </div>
