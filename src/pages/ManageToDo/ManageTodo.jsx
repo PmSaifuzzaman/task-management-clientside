@@ -58,7 +58,7 @@ const ManageTodo = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 <div className="bg-teal-100">
-                    <h2>To-Do</h2>
+                    <h2 className="text-2xl font-bold text-center py-3 border-b-4 border-double border-black">To-Do</h2>
                     <div>
                         {
                             toDo?.map(single_toDo => <TaskCard key={single_toDo._id} single_toDo={single_toDo}></TaskCard>)
@@ -66,7 +66,7 @@ const ManageTodo = () => {
                     </div>
                 </div>
                 <div className="bg-teal-100">
-                    <h2>Ongoing</h2>
+                    <h2 className="text-2xl font-bold text-center py-3 border-b-4 border-double border-black">Ongoing</h2>
                     <div>
                         {
                             ongoing?.map(single_toDo => <TaskCard key={single_toDo._id} single_toDo={single_toDo}></TaskCard>)
@@ -74,7 +74,7 @@ const ManageTodo = () => {
                     </div>
                 </div>
                 <div className="bg-teal-100">
-                    <h2>completed</h2>
+                    <h2 className="text-2xl font-bold text-center py-3 border-b-4 border-double border-black">completed</h2>
                     <div>
                         {
                             completed?.map(single_toDo => <TaskCard key={single_toDo._id} single_toDo={single_toDo}></TaskCard>)
