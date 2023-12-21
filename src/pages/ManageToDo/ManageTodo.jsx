@@ -1,16 +1,88 @@
 import { FaPlus } from "react-icons/fa";
 import Navbar from "../../components/Navbar/Navbar";
 import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { authContext } from "../../providers/AuthProvider";
+import TaskCard from "./TaskCard";
 
 
 const ManageTodo = () => {
+
+    const [toDo, setToDo] = useState([]);
+    const [ongoing, setOngoing] = useState([]);
+    const [completed, setCompleted] = useState([]);
+
+    const { user } = useContext(authContext);
+    const email = user ? user.email : null;
+    console.log(email);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/toDo/${email}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setToDo(data);
+                console.log(data); // Log the data inside the callback
+            })
+            .catch((error) => console.error("Error fetching to-do data:", error));
+
+
+        fetch(`http://localhost:5000/ongoing/${email}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setOngoing(data);
+                console.log(data); // Log the data inside the callback
+            })
+            .catch((error) => console.error("Error fetching to-do data:", error));
+
+
+        fetch(`http://localhost:5000/completed/${email}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setCompleted(data);
+                console.log(data); // Log the data inside the callback
+            })
+            .catch((error) => console.error("Error fetching to-do data:", error));
+
+
+
+    }, [email]);
+
+    
+
+
     return (
         <div>
             <Navbar></Navbar>
             <div className="flex justify-center my-5">
                 <Link to={"/addToDo"} className="btn btn-sm font-bold rounded-full bg-teal-400 text-white"><FaPlus></FaPlus></Link>
             </div>
-           <h2>Manage To do</h2> 
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="bg-teal-100">
+                    <h2>To-Do</h2>
+                    <div>
+                        {
+                            toDo?.map(single_toDo => <TaskCard key={single_toDo._id} single_toDo={single_toDo}></TaskCard>)
+                        }
+                    </div>
+                </div>
+                <div className="bg-teal-100">
+                    <h2>Ongoing</h2>
+                    <div>
+                        {
+                            ongoing?.map(single_toDo => <TaskCard key={single_toDo._id} single_toDo={single_toDo}></TaskCard>)
+                        }
+                    </div>
+                </div>
+                <div className="bg-teal-100">
+                    <h2>completed</h2>
+                    <div>
+                        {
+                            completed?.map(single_toDo => <TaskCard key={single_toDo._id} single_toDo={single_toDo}></TaskCard>)
+                        }
+                    </div>
+                </div>
+
+            </div>
         </div>
     );
 };
