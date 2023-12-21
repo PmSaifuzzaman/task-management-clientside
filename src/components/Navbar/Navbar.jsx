@@ -1,7 +1,29 @@
+import { getAuth } from "firebase/auth";
+import { useContext } from "react";
+import { authContext } from "../../providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
+import userDefaultPhoto from "../../assets/users/user.png"
 
 
 const Navbar = () => {
+    // Access Context api
+    const { logOut, user } = useContext(authContext);
+
+    const email = user ? user.email : null;
+    console.log(email)
+
+    const auth = getAuth()
+
+    // Log out messege
+    const handleLogOut = () => {
+        logOut(auth)
+            .then(() => {
+                alert('Log out Successfully')
+            })
+            .catch(() => {
+                alert('Cannot log out')
+            })
+    }
     return (
         <div className="navbar  px-5">
             <div className="navbar-start">
@@ -13,7 +35,7 @@ const Navbar = () => {
                         <li>
                             <NavLink to="/"
                                 className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "text-red-400 underline font-medium" : ""
+                                    isPending ? "pending" : isActive ? "text-teal-400 underline font-medium" : ""
                                 }>
                                 Home
                             </NavLink>
@@ -21,7 +43,7 @@ const Navbar = () => {
                         <li>
                             <NavLink to="/aboutUs" 
                                 className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "text-red-400 underline font-medium" : ""
+                                    isPending ? "pending" : isActive ? "text-teal-400 underline font-medium" : ""
                                 }>
                                 About Us
                             </NavLink>
@@ -29,7 +51,7 @@ const Navbar = () => {
                         <li>
                             <NavLink to="/toDo" 
                                 className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "text-red-400 underline font-medium" : ""
+                                    isPending ? "pending" : isActive ? "text-teal-400 underline font-medium" : ""
                                 }>
                                 To-Do
                             </NavLink>
@@ -44,7 +66,7 @@ const Navbar = () => {
                     <li>
                         <NavLink to="/"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "text-red-400 underline font-medium" : ""
+                                isPending ? "pending" : isActive ? "text-teal-400 underline font-medium" : ""
                             }>
                             Home
                         </NavLink>
@@ -52,7 +74,7 @@ const Navbar = () => {
                     <li>
                         <NavLink to="/aboutUs"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "text-red-400 underline font-medium" : ""
+                                isPending ? "pending" : isActive ? "text-teal-400 underline font-medium" : ""
                             }>
                             About Us
                         </NavLink>
@@ -60,7 +82,7 @@ const Navbar = () => {
                     <li>
                         <NavLink to="/toDo"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "text-red-400 underline font-medium" : ""
+                                isPending ? "pending" : isActive ? "text-teal-400 underline font-medium" : ""
                             }>
                             To-Do
                         </NavLink>
@@ -68,10 +90,10 @@ const Navbar = () => {
                     
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn btn-sm">Login</a>
-            </div>
             {/* <div className="navbar-end">
+                <a className="btn btn-sm">Login</a>
+            </div> */}
+            <div className="navbar-end">
                 {
                     user && <p className="font-semibold hidden md:block">{user?.email}</p>
                 }
@@ -92,7 +114,7 @@ const Navbar = () => {
                         <Link className="btn" to={"/login"}>Login</Link>
                 }
                 
-            </div> */}
+            </div>
         </div>
     );
 };
