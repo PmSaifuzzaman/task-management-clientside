@@ -4,6 +4,7 @@ import MainLayout from "../layouts/MainLayout";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import AddToDo from "../pages/AddToDo/AddToDo";
 
 
 
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         {
           path: "/aboutUs",
           element: <AboutUs></AboutUs>
+        },
+        {
+          path: "/addToDo",
+          element: <AddToDo></AddToDo>
         },
         {
           path: "/login",

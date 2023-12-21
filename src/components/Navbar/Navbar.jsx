@@ -49,11 +49,11 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/toDo" 
+                            <NavLink to="/AddToDo" 
                                 className={({ isActive, isPending }) =>
                                     isPending ? "pending" : isActive ? "text-teal-400 underline font-medium" : ""
                                 }>
-                                To-Do
+                                Add To-Do
                             </NavLink>
                         </li>
                     
@@ -80,11 +80,11 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/toDo"
+                        <NavLink to="/AddToDo"
                             className={({ isActive, isPending }) =>
                                 isPending ? "pending" : isActive ? "text-teal-400 underline font-medium" : ""
                             }>
-                            To-Do
+                            Add To-Do
                         </NavLink>
                     </li>
                     
