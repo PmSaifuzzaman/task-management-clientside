@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { useForm } from "react-hook-form"
 import { authContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const AddToDo = () => {
@@ -23,6 +24,16 @@ const AddToDo = () => {
             .then((res) => res.json())
             .then((result) => {
                 console.log(result)
+                if (result.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Task Added Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+
+                }
+
             });
     }
 
