@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import userDefaultPhoto from "../../assets/users/user.png"
 
 
+
 const Navbar = () => {
     // Access Context api
     const { logOut, user } = useContext(authContext);
@@ -131,6 +132,7 @@ const Navbar = () => {
                 }
 
             </div>
+            
         </div>
     );
 };

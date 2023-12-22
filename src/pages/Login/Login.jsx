@@ -4,6 +4,7 @@ import { authContext } from "../../providers/AuthProvider";
 import Navbar from "../../components/Navbar/Navbar";
 
 
+
 const Login = () => {
     const [loginError, setLoginError] = useState('');
     const [LoginSuccess, setLoginSuccess] = useState('');
@@ -74,6 +75,7 @@ const Login = () => {
                     LoginSuccess && alert("Login Successfully")
                 }
                 <p className="text-center pb-8">Do not Have An Account ? <Link className="underline text-teal-400 font-semibold" to={"/register"}>Register</Link></p>
+                
             </div>
         </div>
     );

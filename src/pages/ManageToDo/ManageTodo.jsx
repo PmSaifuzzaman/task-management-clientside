@@ -53,6 +53,10 @@ const ManageTodo = () => {
     return (
         <div>
             <Navbar></Navbar>
+            <div className="flex justify-center items-center gap-5 bg-teal-100 py-2">
+                <img className="w-20 rounded-full" src={user.photoURL} alt="" />
+                <p className="font-bold">{email}</p>
+            </div>
             <div className="flex justify-center my-5">
                 <Link to={"/addToDo"} className="btn btn-sm font-bold rounded-full bg-teal-400 text-white"><FaPlus></FaPlus></Link>
             </div>

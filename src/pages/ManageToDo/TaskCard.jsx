@@ -1,10 +1,16 @@
+// For drag and drop
+
+
+
+
 import PropTypes from 'prop-types';
-import { FaEdit, FaTrash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaTrash } from 'react-icons/fa';
+// import { FaEdit, FaTrash } from 'react-icons/fa';
+// import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 
-const TaskCard = ({ single_toDo, toDo, setToDo, ongoing, setOngoing, completed, setCompleted }) => {
+const TaskCard = ({ single_toDo, toDo, setToDo, ongoing, setOngoing, completed, setCompleted,  }) => {
     const { _id, deadline, priority } = single_toDo;
 
     const handleDelete = (_id) => {
@@ -60,7 +66,7 @@ const TaskCard = ({ single_toDo, toDo, setToDo, ongoing, setOngoing, completed, 
                     <p>Priority: {priority}</p>
                 </div>
                 <div className="card-actions justify-end">
-                    <Link className=" text-2xl"><FaEdit></FaEdit></Link>
+                    {/* <Link className=" text-2xl"><FaEdit></FaEdit></Link> */}
                     <button onClick={() => handleDelete(_id)} className='text-2xl'><FaTrash></FaTrash></button>
                 </div>
             </div>

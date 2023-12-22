@@ -7,6 +7,7 @@ import { FaGoogle } from 'react-icons/fa';
 import Navbar from "../../components/Navbar/Navbar";
 
 
+
 const Register = () => {
     const [registerError, setRegisterError] = useState('');
     const [registerSuccess, setRegisterSuccess] = useState('');
@@ -131,6 +132,7 @@ const Register = () => {
                 }
                 <div className='flex items-center justify-center pb-2'><button onClick={handleGoogleLogin} className='btn text-teal-400'> <FaGoogle></FaGoogle> Log in with google</button></div>
                 <p className="text-center pb-4">Already Have An Account ? <Link className="underline text-teal-400 font-semibold" to={"/login"}>Login</Link></p>
+                
             </div>
         </div>
     );
