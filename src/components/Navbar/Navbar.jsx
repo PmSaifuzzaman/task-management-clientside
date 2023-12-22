@@ -107,9 +107,7 @@ const Navbar = () => {
 
                 </ul>
             </div>
-            {/* <div className="navbar-end">
-                <a className="btn btn-sm">Login</a>
-            </div> */}
+            
             <div className="navbar-end">
                 {
                     user && <p className="font-semibold hidden md:block">{user?.email}</p>

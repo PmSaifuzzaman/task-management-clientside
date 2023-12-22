@@ -3,6 +3,10 @@ import Navbar from "../../components/Navbar/Navbar";
 import { useForm } from "react-hook-form"
 import { authContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+// aos animation
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 
 const AddToDo = () => {
@@ -36,12 +40,15 @@ const AddToDo = () => {
 
             });
     }
+    useEffect(() => {
+        Aos.init();
+    }, [])
 
     return (
         <div>
             <Navbar></Navbar>
             <div className="flex justify-center mt-10">
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" data-aos="zoom-in-up">
                     <div className="flex gap-5">
                         <input type="text" placeholder="Task title" className="input input-bordered w-full max-w-xs" {...register("title")} />
                         <input type="date" placeholder="Deadline" className="input input-bordered w-full max-w-xs" {...register("deadline")} />

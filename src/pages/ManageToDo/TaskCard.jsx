@@ -1,7 +1,6 @@
-// For drag and drop
-
-
-
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 import PropTypes from 'prop-types';
 import { FaTrash } from 'react-icons/fa';
@@ -55,9 +54,12 @@ const TaskCard = ({ single_toDo, toDo, setToDo, ongoing, setOngoing, completed, 
             }
         })
     }
+    useEffect(() => {
+        Aos.init();
+    }, [])
 
     return (
-        <div className="card m-4 bg-white rounded-md shadow-md">
+        <div className="card m-4 bg-white rounded-md shadow-md" data-aos="zoom-in">
             <div className=" p-4 ">
                 <h2 className="card-title">{single_toDo.title}</h2>
                 <p>{single_toDo.description}</p>

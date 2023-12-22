@@ -5,7 +5,10 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 import { FaGoogle } from 'react-icons/fa';
 import Navbar from "../../components/Navbar/Navbar";
-
+// aos animation
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 
 const Register = () => {
@@ -42,6 +45,8 @@ const Register = () => {
 
             });
     }
+
+
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -85,15 +90,18 @@ const Register = () => {
                 setRegisterError(errorMessage);
             });
 
-
-
     }
+
+    useEffect(() => {
+        Aos.init();
+    }, [])
+
     return (
         <div>
             <Navbar></Navbar>
             <div className="max-w-lg shadow-xl shadow-teal-300 mx-auto">
                 <h2 className="text-center mt-5 pt-8 text-4xl font-semibold">Register your account </h2>
-                <form onSubmit={handleRegister} className="card-body mx-auto">
+                <form onSubmit={handleRegister} className="card-body mx-auto" data-aos="zoom-in-down">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Your Name</span>
@@ -132,7 +140,7 @@ const Register = () => {
                 }
                 <div className='flex items-center justify-center pb-2'><button onClick={handleGoogleLogin} className='btn text-teal-400'> <FaGoogle></FaGoogle> Log in with google</button></div>
                 <p className="text-center pb-4">Already Have An Account ? <Link className="underline text-teal-400 font-semibold" to={"/login"}>Login</Link></p>
-                
+
             </div>
         </div>
     );

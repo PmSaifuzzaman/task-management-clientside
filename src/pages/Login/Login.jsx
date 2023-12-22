@@ -2,7 +2,10 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../providers/AuthProvider";
 import Navbar from "../../components/Navbar/Navbar";
-
+// aos animation
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 
 const Login = () => {
@@ -43,12 +46,17 @@ const Login = () => {
             });
 
     }
+
+    useEffect(() => {
+        Aos.init();
+    }, [])
+
     return (
         <div>
             <Navbar></Navbar>
             <div className="max-w-sm shadow-2xl shadow-teal-300 mx-auto ">
                 <h2 className="text-center mt-5 pt-8 text-4xl font-semibold">Login your account </h2>
-                <form onSubmit={handleLogIn} className="card-body  mx-auto">
+                <form onSubmit={handleLogIn} className="card-body  mx-auto" data-aos="zoom-in-up">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
@@ -65,7 +73,7 @@ const Login = () => {
                         <button className="btn bg-teal-400 text-white">Login</button>
                     </div>
                 </form>
-                
+
 
                 {
                     loginError && <p className="text-red-800 text-center">Email or Password does not match</p>
@@ -75,7 +83,7 @@ const Login = () => {
                     LoginSuccess && alert("Login Successfully")
                 }
                 <p className="text-center pb-8">Do not Have An Account ? <Link className="underline text-teal-400 font-semibold" to={"/register"}>Register</Link></p>
-                
+
             </div>
         </div>
     );

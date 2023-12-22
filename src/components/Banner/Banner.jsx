@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
 import bannerImg from "../../assets/banner.jpg"
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const Banner = () => {
+
+    useEffect(() => {
+        Aos.init();
+    }, [])
+
     return (
         <div className="hero" >
             <div className="hero-content flex-col lg:flex-row-reverse">
