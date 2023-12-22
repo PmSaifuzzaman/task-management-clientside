@@ -17,7 +17,7 @@ const ManageTodo = () => {
     console.log(email);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/toDo/${email}`)
+        fetch(`https://task-management-serverside-iota.vercel.app/toDo/${email}`)
             .then((res) => res.json())
             .then((data) => {
                 setToDo(data);
@@ -26,7 +26,7 @@ const ManageTodo = () => {
             .catch((error) => console.error("Error fetching to-do data:", error));
 
 
-        fetch(`http://localhost:5000/ongoing/${email}`)
+        fetch(`https://task-management-serverside-iota.vercel.app/ongoing/${email}`)
             .then((res) => res.json())
             .then((data) => {
                 setOngoing(data);
@@ -35,7 +35,7 @@ const ManageTodo = () => {
             .catch((error) => console.error("Error fetching to-do data:", error));
 
 
-        fetch(`http://localhost:5000/completed/${email}`)
+        fetch(`https://task-management-serverside-iota.vercel.app/completed/${email}`)
             .then((res) => res.json())
             .then((data) => {
                 setCompleted(data);

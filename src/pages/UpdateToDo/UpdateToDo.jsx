@@ -17,7 +17,7 @@ const UpdateToDo = () => {
 
     // // load single task
     const singleTask = useLoaderData();
-    const{_id, title, deadline, description} = singleTask;
+    const{_id, title, deadline, description, status} = singleTask;
 
 
 
@@ -26,7 +26,7 @@ const UpdateToDo = () => {
     const onSubmit = (data) => {
         console.log(data)
 
-        fetch(`http://localhost:5000/myTask/${_id}`, {
+        fetch(`https://task-management-serverside-iota.vercel.app/myTask/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",
@@ -80,7 +80,7 @@ const UpdateToDo = () => {
                             <label htmlFor="status" className="block text-sm font-medium text-gray-700">
                                 Task Status
                             </label>
-                            <select {...register("status")} className="select select-bordered ">
+                            <select {...register("status")} className="select select-bordered " defaultValue={status}>
                                 <option value="to-do">to-do</option>
                                 <option value="ongoing">ongoing</option>
                                 <option value="completed">completed</option>

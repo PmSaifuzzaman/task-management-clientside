@@ -26,7 +26,7 @@ const TaskCard = ({ single_toDo, toDo, setToDo, ongoing, setOngoing, completed, 
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/task/${_id}`, {
+                fetch(`https://task-management-serverside-iota.vercel.app/task/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

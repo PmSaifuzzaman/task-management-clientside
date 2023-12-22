@@ -31,7 +31,7 @@ const router = createBrowserRouter([
         {
           path: "/updateToDo/:id",
           element: <PrivateRoute><UpdateToDo></UpdateToDo></PrivateRoute>,
-          loader: ({ params }) => fetch(`http://localhost:5000/myTask/${params.id}`)
+          loader: ({ params }) => fetch(`https://task-management-serverside-iota.vercel.app/myTask/${params.id}`)
         },
         {
           path: "/manageToDo",

@@ -18,7 +18,7 @@ const AddToDo = () => {
     const { register, handleSubmit } = useForm()
     const onSubmit = (data) => {
         console.log(data)
-        fetch("http://localhost:5000/tasks", {
+        fetch("https://task-management-serverside-iota.vercel.app/tasks", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
