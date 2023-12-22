@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 
-const TaskCard = ({ single_toDo, toDo, setToDo, completed, setCompleted }) => {
-    const{_id, deadline, priority} = single_toDo;
+const TaskCard = ({ single_toDo, toDo, setToDo, ongoing, setOngoing, completed, setCompleted }) => {
+    const { _id, deadline, priority } = single_toDo;
 
     const handleDelete = (_id) => {
 
@@ -32,14 +32,18 @@ const TaskCard = ({ single_toDo, toDo, setToDo, completed, setCompleted }) => {
                                 'Your Task has been deleted.',
                                 'success'
                             )
-                            const remainingTodoTasks = toDo?.filter(single_toDo => single_toDo._id !== _id) 
+                            // Remove immidietly from ui
+                            const remainingTodoTasks = toDo?.filter(single_toDo => single_toDo._id !== _id)
                             setToDo(remainingTodoTasks)
 
-                            const remainingCompletedTask = completed?.filter(completedTask => completedTask._id !== _id) 
+                            const remainingOngoingTasks = ongoing?.filter(ongoing_toDo => ongoing_toDo._id !== _id)
+                            setOngoing(remainingOngoingTasks)
+
+                            const remainingCompletedTask = completed?.filter(completedTask => completedTask._id !== _id)
                             setCompleted(remainingCompletedTask)
-                            
-                            
-                            
+
+
+
                         }
                     })
             }
@@ -70,8 +74,10 @@ TaskCard.propTypes = {
     single_toDo: PropTypes.object,
     toDo: PropTypes.array,
     setToDo: PropTypes.func,
+    ongoing: PropTypes.array,
+    setOngoing: PropTypes.func,
     completed: PropTypes.array,
     setCompleted: PropTypes.func,
-    
+
 
 }

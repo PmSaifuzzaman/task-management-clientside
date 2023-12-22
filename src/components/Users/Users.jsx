@@ -49,7 +49,7 @@ const Users = () => {
                 <div className="lg:w-2/3 w-full">
                     <Swiper
                         modules={[Pagination]}
-                        slidesPerview={1.2}
+                        slidesperview={1.2}
                         spaceBetween={20}
                         breakpoints={{
                             768: {

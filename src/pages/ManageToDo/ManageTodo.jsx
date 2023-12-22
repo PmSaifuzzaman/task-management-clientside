@@ -65,6 +65,10 @@ const ManageTodo = () => {
                                 single_toDo={single_toDo}
                                 toDo={toDo}
                                 setToDo={setToDo}
+                                completed={completed}
+                                setCompleted={setCompleted}
+                                ongoing={ongoing}
+                                setOngoing={setOngoing}
                             ></TaskCard>)
                         }
                     </div>
@@ -75,8 +79,12 @@ const ManageTodo = () => {
                         {
                             ongoing?.map(single_toDo => <TaskCard key={single_toDo._id}
                                 single_toDo={single_toDo}
-                                // ongoing={ongoing}
-                                // setOngoing={setOngoing}
+                                toDo={toDo}
+                                setToDo={setToDo}
+                                completed={completed}
+                                setCompleted={setCompleted}
+                                ongoing={ongoing}
+                                setOngoing={setOngoing}
                             ></TaskCard>)
                         }
                     </div>
@@ -86,10 +94,14 @@ const ManageTodo = () => {
                     <div>
                         {
                             completed?.map(single_toDo => <TaskCard key={single_toDo._id}
-                                 single_toDo={single_toDo}
-                                 completed={completed}
-                                 setCompleted={setCompleted}
-                                 ></TaskCard>)
+                                single_toDo={single_toDo}
+                                toDo={toDo}
+                                setToDo={setToDo}
+                                completed={completed}
+                                setCompleted={setCompleted}
+                                ongoing={ongoing}
+                                setOngoing={setOngoing}
+                            ></TaskCard>)
                         }
                     </div>
                 </div>
